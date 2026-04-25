@@ -610,21 +610,12 @@ footer p {
     gap: 2rem !important;
   }
   
-  section, .container-black, .container-green, #register-hero, #login-hero, .rating-box {
+  .container-black, .container-green, #register-hero, #login-hero {
     border-radius: 0 !important;
     margin-left: -1.5rem !important;
     margin-right: -1.5rem !important;
     width: calc(100% + 3rem) !important;
-    border: none !important;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
-    color: var(--white) !important;
-  }
-
-  section h2, section h3 {
-    color: var(--white) !important;
-  }
-
-  section p {
-    color: #aaa !important;
+    border-left: none !important;
+    border-right: none !important;
   }
 }
