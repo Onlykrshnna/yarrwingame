@@ -543,6 +543,11 @@ footer p {
 }
 
 @media (max-width: 768px) {
+  main {
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
   section { padding: 3rem 1.5rem; }
   
   .hero-section {
