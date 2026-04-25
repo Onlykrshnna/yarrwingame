@@ -1,13 +1,19 @@
 :root {
   --primary-green: #00c853;
   --secondary-green: #00e676;
-  --black: #121212;
+  --dark-green: #1b5e20;
+  --accent-green: #a2ffb3;
+  --black: #0a0a0a;
+  --dark-bg: #121212;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --white: #ffffff;
   --light-gray: #f4f7f6;
   --text-dark: #1a1a1a;
-  --text-muted: #666666;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --text-muted: #888888;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -47,15 +53,30 @@ header {
 }
 
 .logo a {
-  font-size: 1.5rem;
-  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 900;
   color: var(--white);
   text-decoration: none;
+  font-style: italic;
   letter-spacing: -1px;
+  position: relative;
 }
 
 .logo span {
   color: var(--primary-green);
+}
+
+.logo .swoosh {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-green));
+  border-radius: 2px;
 }
 
 .nav-links {
@@ -313,13 +334,72 @@ p {
 }
 
 .container-black {
-  background-color: var(--black);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   color: var(--white);
   border-radius: 20px;
+  border: 1px solid var(--glass-border);
 }
 
 .container-black h2, .container-black p, .container-black li {
   color: var(--white);
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  color: var(--white);
+  width: 100%;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 15px rgba(0, 200, 83, 0.2);
+}
+
+/* Premium Buttons */
+.btn-premium {
+  background: linear-gradient(180deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(0, 200, 83, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 200, 83, 0.4);
+  filter: brightness(1.1);
+}
+
+.btn-premium:active {
+  transform: translateY(-1px);
 }
 
 /* Table Styles */
