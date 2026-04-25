@@ -45,10 +45,10 @@ const voteCountEl = document.getElementById("vote-count");
 const ratingMessage = document.getElementById("rating-message");
 
 let selectedRating = 5;
-let reviews = JSON.parse(localStorage.getItem("yaarwin_reviews")) || [];
+let reviews = JSON.parse(localStorage.getItem("yaarwin_v2_reviews")) || [];
 
-let totalVotes = parseInt(localStorage.getItem("yaarwin_total_votes")) || 0;
-let currentAvg = parseFloat(localStorage.getItem("yaarwin_avg_rating")) || 0;
+let totalVotes = parseInt(localStorage.getItem("yaarwin_v2_total_votes")) || 0;
+let currentAvg = parseFloat(localStorage.getItem("yaarwin_v2_avg_rating")) || 0;
 
 // Initial Render
 renderReviews();
@@ -146,9 +146,9 @@ function updateStats() {
 }
 
 function saveState() {
-  localStorage.setItem("yaarwin_reviews", JSON.stringify(reviews));
-  localStorage.setItem("yaarwin_total_votes", totalVotes);
-  localStorage.setItem("yaarwin_avg_rating", currentAvg);
+  localStorage.setItem("yaarwin_v2_reviews", JSON.stringify(reviews));
+  localStorage.setItem("yaarwin_v2_total_votes", totalVotes);
+  localStorage.setItem("yaarwin_v2_avg_rating", currentAvg);
 }
 
 // Simulated Live Updates
@@ -156,7 +156,7 @@ setInterval(() => {
   if (totalVotes > 0 && Math.random() > 0.8) {
     totalVotes += Math.floor(Math.random() * 5) + 1;
     updateStats();
-    localStorage.setItem("yaarwin_total_votes", totalVotes);
+    localStorage.setItem("yaarwin_v2_total_votes", totalVotes);
   }
 }, 8000);
 
