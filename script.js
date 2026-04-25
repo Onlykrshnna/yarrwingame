@@ -137,6 +137,12 @@ function renderReviews() {
 function updateStats() {
   if (avgRatingEl) avgRatingEl.innerText = currentAvg.toFixed(1);
   if (voteCountEl) voteCountEl.innerText = totalVotes.toLocaleString();
+  
+  const statStars = document.getElementById("stat-stars");
+  if (statStars) {
+    const rounded = Math.round(currentAvg);
+    statStars.innerHTML = '★'.repeat(rounded) + '☆'.repeat(5 - rounded);
+  }
 }
 
 function saveState() {
