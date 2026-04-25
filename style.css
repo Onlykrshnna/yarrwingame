@@ -612,4 +612,8 @@ footer p {
     flex-direction: column;
     gap: 2rem !important;
   }
+
+  .stars {
+    font-size: 2.2rem !important;
+  }
 }
