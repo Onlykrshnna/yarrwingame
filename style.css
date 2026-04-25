@@ -192,6 +192,7 @@ header {
 main {
   max-width: 850px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .hero-section {
@@ -610,14 +611,5 @@ footer p {
   .review-stats-grid {
     flex-direction: column;
     gap: 2rem !important;
-  }
-  
-  .container-black, .container-green, #register-hero, #login-hero {
-    border-radius: 0 !important;
-    margin-left: -1.5rem !important;
-    margin-right: -1.5rem !important;
-    width: calc(100% + 3rem) !important;
-    border-left: none !important;
-    border-right: none !important;
   }
 }
