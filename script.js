@@ -172,7 +172,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('section').forEach(section => {
   section.style.opacity = '0';
-  section.style.transform = 'translateY(30px)';
-  section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  section.style.transform = 'translateY(15px)';
+  section.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
   observer.observe(section);
 });
