@@ -45,14 +45,10 @@ const voteCountEl = document.getElementById("vote-count");
 const ratingMessage = document.getElementById("rating-message");
 
 let selectedRating = 5;
-let reviews = JSON.parse(localStorage.getItem("yaarwin_reviews")) || [
-  { name: "Rahul Sharma", rating: 5, text: "Best gaming platform I've used. Fast withdrawals and great support!", date: "2 mins ago" },
-  { name: "Priya K.", rating: 4, text: "Really smooth experience on mobile. Love the variety of games.", date: "15 mins ago" },
-  { name: "Amit Singh", rating: 5, text: "Yaar Win is definitely the most trusted site in India right now.", date: "1 hour ago" }
-];
+let reviews = JSON.parse(localStorage.getItem("yaarwin_reviews")) || [];
 
-let totalVotes = parseInt(localStorage.getItem("yaarwin_total_votes")) || 126786;
-let currentAvg = parseFloat(localStorage.getItem("yaarwin_avg_rating")) || 4.8;
+let totalVotes = parseInt(localStorage.getItem("yaarwin_total_votes")) || 0;
+let currentAvg = parseFloat(localStorage.getItem("yaarwin_avg_rating")) || 0;
 
 // Initial Render
 renderReviews();
@@ -116,6 +112,14 @@ if (reviewForm) {
 
 function renderReviews() {
   if (!reviewsList) return;
+  if (reviews.length === 0) {
+    reviewsList.innerHTML = `
+      <div style="text-align: center; padding: 3rem; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.1);">
+        <p style="color: #666; margin: 0;">No reviews yet. Be the first to share your experience!</p>
+      </div>
+    `;
+    return;
+  }
   reviewsList.innerHTML = reviews.map(r => `
     <div class="glass-card" style="padding: 1.5rem; border-radius: 15px; background: rgba(255,255,255,0.03);">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
@@ -143,7 +147,7 @@ function saveState() {
 
 // Simulated Live Updates
 setInterval(() => {
-  if (Math.random() > 0.8) {
+  if (totalVotes > 0 && Math.random() > 0.8) {
     totalVotes += Math.floor(Math.random() * 5) + 1;
     updateStats();
     localStorage.setItem("yaarwin_total_votes", totalVotes);
