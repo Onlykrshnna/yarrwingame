@@ -15,7 +15,7 @@ document.querySelectorAll('nav a, .btn-nav').forEach(anchor => {
     const href = this.getAttribute('href');
     
     // Only handle internal links
-    if (href.startsWith('#')) {
+    if (href && href.startsWith('#')) {
       e.preventDefault();
       const targetId = href;
       const targetElement = document.querySelector(targetId);
@@ -36,106 +36,121 @@ document.querySelectorAll('nav a, .btn-nav').forEach(anchor => {
   });
 });
 
-// Star rating system logic
-const starContainer = document.getElementById("star-rating");
-const stars = document.querySelectorAll(".star");
+// Review System Logic
+const reviewForm = document.getElementById("review-form");
+const reviewsList = document.getElementById("reviews-list");
+const starInput = document.querySelectorAll("#star-rating .star");
 const avgRatingEl = document.getElementById("avg-rating");
 const voteCountEl = document.getElementById("vote-count");
 const ratingMessage = document.getElementById("rating-message");
 
-// Initial state
-let totalVotes = parseInt(voteCountEl.innerText.replace(/,/g, '')) || 126786;
-let currentAvg = parseFloat(avgRatingEl.innerText) || 4.8;
-let userHasVoted = localStorage.getItem("yaarwin_voted") === "true";
+let selectedRating = 5;
+let reviews = JSON.parse(localStorage.getItem("yaarwin_reviews")) || [
+  { name: "Rahul Sharma", rating: 5, text: "Best gaming platform I've used. Fast withdrawals and great support!", date: "2 mins ago" },
+  { name: "Priya K.", rating: 4, text: "Really smooth experience on mobile. Love the variety of games.", date: "15 mins ago" },
+  { name: "Amit Singh", rating: 5, text: "Yaar Win is definitely the most trusted site in India right now.", date: "1 hour ago" }
+];
 
-// Load dynamic state if exists
-const savedVotes = localStorage.getItem("yaarwin_total_votes");
-const savedAvg = localStorage.getItem("yaarwin_avg_rating");
-if (savedVotes) totalVotes = parseInt(savedVotes);
-if (savedAvg) currentAvg = parseFloat(savedAvg);
+let totalVotes = parseInt(localStorage.getItem("yaarwin_total_votes")) || 126786;
+let currentAvg = parseFloat(localStorage.getItem("yaarwin_avg_rating")) || 4.8;
 
-// Update UI initially
-updateStatUI();
+// Initial Render
+renderReviews();
+updateStats();
 
-if (userHasVoted) {
-  starContainer.classList.add("has-voted");
-  ratingMessage.style.display = "block";
-  highlightStars(Math.round(currentAvg));
-}
-
-stars.forEach(star => {
+// Star Input Logic
+starInput.forEach(star => {
   star.addEventListener("mouseover", function() {
-    if (!userHasVoted) {
-      const val = parseInt(this.getAttribute("data-value"));
-      highlightStars(val);
-    }
+    highlightInputStars(this.getAttribute("data-value"));
   });
-
   star.addEventListener("click", function() {
-    if (!userHasVoted) {
-      const val = parseInt(this.getAttribute("data-value"));
-      submitVote(val);
-    }
+    selectedRating = parseInt(this.getAttribute("data-value"));
+    highlightInputStars(selectedRating);
   });
 });
 
-starContainer.addEventListener("mouseleave", function() {
-  if (!userHasVoted) {
-    highlightStars(0);
-  }
+document.getElementById("star-rating").addEventListener("mouseleave", () => {
+  highlightInputStars(selectedRating);
 });
 
-function highlightStars(val) {
-  stars.forEach(s => {
-    const starVal = parseInt(s.getAttribute("data-value"));
-    if (starVal <= val) {
-      s.classList.add("active");
-    } else {
-      s.classList.remove("active");
-    }
+function highlightInputStars(val) {
+  starInput.forEach(s => {
+    s.classList.toggle("active", s.getAttribute("data-value") <= val);
   });
 }
 
-function updateStatUI() {
-  avgRatingEl.innerText = currentAvg.toFixed(1);
-  voteCountEl.innerText = totalVotes.toLocaleString();
+// Form Submission
+if (reviewForm) {
+  reviewForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("review-name").value;
+    const text = document.getElementById("review-text").value;
+
+    const newReview = {
+      name,
+      rating: selectedRating,
+      text,
+      date: "Just now"
+    };
+
+    reviews.unshift(newReview);
+    if (reviews.length > 6) reviews.pop(); // Keep only recent reviews
+
+    // Update Stats
+    totalVotes++;
+    currentAvg = ((currentAvg * (totalVotes - 1)) + selectedRating) / totalVotes;
+
+    // Save & Update UI
+    saveState();
+    renderReviews();
+    updateStats();
+
+    reviewForm.reset();
+    selectedRating = 5;
+    highlightInputStars(5);
+    
+    ratingMessage.style.display = "block";
+    setTimeout(() => { ratingMessage.style.display = "none"; }, 5000);
+  });
 }
 
-function submitVote(val) {
-  // Update local state
-  totalVotes += 1;
-  currentAvg = ((currentAvg * (totalVotes - 1)) + val) / totalVotes;
-  
-  // Update UI
-  updateStatUI();
-  
-  // Save state
-  userHasVoted = true;
-  localStorage.setItem("yaarwin_voted", "true");
+function renderReviews() {
+  if (!reviewsList) return;
+  reviewsList.innerHTML = reviews.map(r => `
+    <div class="glass-card" style="padding: 1.5rem; border-radius: 15px; background: rgba(255,255,255,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+        <div>
+          <h4 style="color: white; margin-bottom: 0.2rem; border: none; padding: 0;">${r.name}</h4>
+          <div style="color: #fbbf24; font-size: 0.8rem;">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+        </div>
+        <span style="font-size: 0.75rem; color: #666;">${r.date}</span>
+      </div>
+      <p style="font-size: 0.9rem; color: #aaa; margin: 0;">"${r.text}"</p>
+    </div>
+  `).join('');
+}
+
+function updateStats() {
+  if (avgRatingEl) avgRatingEl.innerText = currentAvg.toFixed(1);
+  if (voteCountEl) voteCountEl.innerText = totalVotes.toLocaleString();
+}
+
+function saveState() {
+  localStorage.setItem("yaarwin_reviews", JSON.stringify(reviews));
   localStorage.setItem("yaarwin_total_votes", totalVotes);
   localStorage.setItem("yaarwin_avg_rating", currentAvg);
-  
-  starContainer.classList.add("has-voted");
-  highlightStars(val);
-  
-  // Show success message
-  ratingMessage.style.display = "block";
 }
 
-// Simulated Live Count
+// Simulated Live Updates
 setInterval(() => {
-  if (Math.random() > 0.7) { // 30% chance to increase count every few seconds
-    totalVotes += Math.floor(Math.random() * 3) + 1;
-    updateStatUI();
+  if (Math.random() > 0.8) {
+    totalVotes += Math.floor(Math.random() * 5) + 1;
+    updateStats();
     localStorage.setItem("yaarwin_total_votes", totalVotes);
   }
-}, 5000);
+}, 8000);
 
-// Simple reveal animation on scroll
-const observerOptions = {
-  threshold: 0.1
-};
-
+// Reveal Animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -143,7 +158,7 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.style.transform = 'translateY(0)';
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
 document.querySelectorAll('section').forEach(section => {
   section.style.opacity = '0';

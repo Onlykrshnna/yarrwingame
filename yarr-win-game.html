@@ -289,24 +289,52 @@
     </div>
   </section>
 
-  <section class="rating-section" style="text-align: center; padding: 4rem 1rem; background: var(--light-gray); border-radius: 20px; margin: 2rem auto; max-width: 800px;">
-    <h2>Community Feedback for Yarr Win</h2>
-    <div class="stars" id="star-rating">
-      <span class="star active" data-value="1">★</span>
-      <span class="star active" data-value="2">★</span>
-      <span class="star active" data-value="3">★</span>
-      <span class="star active" data-value="4">★</span>
-      <span class="star active" data-value="5">★</span>
+  <section class="rating-box" id="reviews">
+    <div class="live-stats-badge">
+      <span class="pulse-dot"></span>
+      Live Community Reviews
     </div>
-    <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1rem;">
+    <h2>What Our Players Say</h2>
+    
+    <div class="review-stats-grid" style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
       <div class="stat-item">
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.2rem;">Average Rating</p>
-        <p style="font-size: 2rem; font-weight: 800; color: var(--black);">4.9<span style="font-size: 1rem; color: var(--text-muted);">/5</span></p>
+        <p class="stat-label">Average Rating</p>
+        <p class="stat-val"><span id="avg-rating">4.8</span><span style="font-size: 1rem; color: var(--text-muted);">/5</span></p>
+        <div class="stars" id="stat-stars" style="font-size: 1.2rem; margin-top: 0.5rem; color: #fbbf24;">
+          ★★★★★
+        </div>
       </div>
       <div class="stat-item">
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.2rem;">Total Reviews</p>
-        <p style="font-size: 2rem; font-weight: 800; color: var(--black);">89,432</p>
+        <p class="stat-label">Verified Reviews</p>
+        <p class="stat-val" id="vote-count">126,786</p>
+        <p style="font-size: 0.8rem; color: var(--primary-green); font-weight: bold;">+142 today</p>
       </div>
+    </div>
+
+    <div class="reviews-container" id="reviews-list" style="max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 4rem;">
+      <!-- Reviews will be injected here by JS -->
+    </div>
+
+    <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: left;">
+      <h3 style="color: white; margin-bottom: 1.5rem; border: none; padding: 0;">Submit Your Review</h3>
+      <form id="review-form" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <input type="text" id="review-name" placeholder="Your Name" class="glass-input" required>
+          <div class="star-input" style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="color: #aaa; font-size: 0.9rem;">Rating:</span>
+            <div class="stars" id="star-rating" style="font-size: 1.5rem; margin-bottom: 0;">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+          </div>
+        </div>
+        <textarea id="review-text" placeholder="Write your experience..." class="glass-input" style="min-height: 100px; resize: vertical;" required></textarea>
+        <button type="submit" class="btn-premium" style="width: 100%;">POST REVIEW</button>
+      </form>
+      <p id="rating-message" style="display: none; color: var(--primary-green); font-weight: bold; margin-top: 1.5rem; background: #e8f5e9; padding: 0.8rem; border-radius: 8px; text-align: center;">Thank you! Your review is live.</p>
     </div>
   </section>
 </main>

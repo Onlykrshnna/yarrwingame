@@ -17,7 +17,7 @@
 <header>
   <div class="nav-container">
     <div class="logo">
-      <a href="index.html">Yarr<span>Win</span></a>
+      <a href="index.html">Yaar<span>Win</span> <div class="swoosh"></div></a>
     </div>
     <nav class="nav-links">
       <a href="yarr-win-game.html">Yarr Win Game</a>
@@ -65,14 +65,53 @@
     </ul>
   </section>
 
-  <section id="community-voice">
+  <section class="rating-box" id="reviews">
+    <div class="live-stats-badge">
+      <span class="pulse-dot"></span>
+      Verified Player Feedback
+    </div>
     <h2>What the Yarr Win Community Says</h2>
-    <p>
-      The best way to judge if yarr win is real or fake is to listen to the players. The yarr win game has built a loyal following because it delivers on its promises. Whether it's the smooth performance of the app or the excitement of the yarr win game itself, the feedback from our users is overwhelmingly positive.
-    </p>
-    <p>
-      We encourage transparency, which is why we have open channels for feedback. If any user has a concern about yarr win, we address it openly. This level of communication is rarely seen in platforms that aren't genuine. At yarr win, your trust is our most valuable asset.
-    </p>
+    
+    <div class="review-stats-grid" style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
+      <div class="stat-item">
+        <p class="stat-label">Trust Score</p>
+        <p class="stat-val"><span id="avg-rating">4.8</span><span style="font-size: 1rem; color: var(--text-muted);">/5</span></p>
+        <div class="stars" id="stat-stars" style="font-size: 1.2rem; margin-top: 0.5rem; color: #fbbf24;">
+          ★★★★★
+        </div>
+      </div>
+      <div class="stat-item">
+        <p class="stat-label">Verified Reviews</p>
+        <p class="stat-val" id="vote-count">126,786</p>
+        <p style="font-size: 0.8rem; color: var(--primary-green); font-weight: bold;">Real-time Data</p>
+      </div>
+    </div>
+
+    <div class="reviews-container" id="reviews-list" style="max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 4rem;">
+      <!-- Reviews will be injected here by JS -->
+    </div>
+
+    <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: left;">
+      <h3 style="color: white; margin-bottom: 1.5rem; border: none; padding: 0;">Share Your Yarr Win Experience</h3>
+      <form id="review-form" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <input type="text" id="review-name" placeholder="Your Name" class="glass-input" required>
+          <div class="star-input" style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="color: #aaa; font-size: 0.9rem;">Rating:</span>
+            <div class="stars" id="star-rating" style="font-size: 1.5rem; margin-bottom: 0;">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+          </div>
+        </div>
+        <textarea id="review-text" placeholder="Write your honest review..." class="glass-input" style="min-height: 100px; resize: vertical;" required></textarea>
+        <button type="submit" class="btn-premium" style="width: 100%;">SUBMIT FEEDBACK</button>
+      </form>
+      <p id="rating-message" style="display: none; color: var(--primary-green); font-weight: bold; margin-top: 1.5rem; background: #e8f5e9; padding: 0.8rem; border-radius: 8px; text-align: center;">Thank you! Your feedback helps the Yarr Win community.</p>
+    </div>
   </section>
 
   <section id="faq">
