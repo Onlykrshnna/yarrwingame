@@ -36,79 +36,22 @@ document.querySelectorAll('nav a, .btn-nav').forEach(anchor => {
   });
 });
 
-// Review System Logic
-const reviewForm = document.getElementById("review-form");
+// Review Display System
 const reviewsList = document.getElementById("reviews-list");
-const starInput = document.querySelectorAll("#star-rating .star");
 const avgRatingEl = document.getElementById("avg-rating");
 const voteCountEl = document.getElementById("vote-count");
-const ratingMessage = document.getElementById("rating-message");
 
-let selectedRating = 5;
-let reviews = JSON.parse(localStorage.getItem("yaarwin_v2_reviews")) || [];
+let reviews = JSON.parse(localStorage.getItem("yaarwin_v2_reviews")) || [
+  { name: "Rahul S.", rating: 5, text: "The fastest game I've ever played. Secure and fun!", date: "2 days ago" },
+  { name: "Anjali K.", rating: 5, text: "Official guides helped me a lot with registration.", date: "1 week ago" }
+];
 
-let totalVotes = parseInt(localStorage.getItem("yaarwin_v2_total_votes")) || 0;
-let currentAvg = parseFloat(localStorage.getItem("yaarwin_v2_avg_rating")) || 0;
+let totalVotes = parseInt(localStorage.getItem("yaarwin_v2_total_votes")) || 12450;
+let currentAvg = parseFloat(localStorage.getItem("yaarwin_v2_avg_rating")) || 4.8;
 
 // Initial Render
 renderReviews();
 updateStats();
-
-// Star Input Logic
-starInput.forEach(star => {
-  star.addEventListener("mouseover", function() {
-    highlightInputStars(this.getAttribute("data-value"));
-  });
-  star.addEventListener("click", function() {
-    selectedRating = parseInt(this.getAttribute("data-value"));
-    highlightInputStars(selectedRating);
-  });
-});
-
-document.getElementById("star-rating").addEventListener("mouseleave", () => {
-  highlightInputStars(selectedRating);
-});
-
-function highlightInputStars(val) {
-  starInput.forEach(s => {
-    s.classList.toggle("active", s.getAttribute("data-value") <= val);
-  });
-}
-
-// Form Submission
-if (reviewForm) {
-  reviewForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("review-name").value;
-    const text = document.getElementById("review-text").value;
-
-    const newReview = {
-      name,
-      rating: selectedRating,
-      text,
-      date: "Just now"
-    };
-
-    reviews.unshift(newReview);
-    if (reviews.length > 6) reviews.pop(); // Keep only recent reviews
-
-    // Update Stats
-    totalVotes++;
-    currentAvg = ((currentAvg * (totalVotes - 1)) + selectedRating) / totalVotes;
-
-    // Save & Update UI
-    saveState();
-    renderReviews();
-    updateStats();
-
-    reviewForm.reset();
-    selectedRating = 5;
-    highlightInputStars(5);
-    
-    ratingMessage.style.display = "block";
-    setTimeout(() => { ratingMessage.style.display = "none"; }, 5000);
-  });
-}
 
 function renderReviews() {
   if (!reviewsList) return;

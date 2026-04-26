@@ -1,19 +1,16 @@
 :root {
   --primary-green: #00c853;
   --secondary-green: #00e676;
-  --dark-green: #1b5e20;
-  --accent-green: #a2ffb3;
-  --black: #0a0a0a;
-  --dark-bg: #121212;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --dark-bg: #0a0a0a;
+  --section-bg: #111111;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --white: #ffffff;
-  --light-gray: #f4f7f6;
-  --text-dark: #1a1a1a;
-  --text-muted: #888888;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --light-gray: #f9f9f9;
+  --text-main: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -314,17 +311,23 @@ section > * {
 }
 
 section {
-  padding: 4rem 1.5rem;
-  margin-bottom: 1rem;
-  background-color: var(--white);
+  padding: 4.5rem 1.5rem;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+section:nth-child(even) {
+  background-color: var(--section-bg);
 }
 
 section h2, section h1, section h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  border-left: 5px solid var(--primary-green);
-  padding-left: 1rem;
-  scroll-margin-top: 100px;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 80px;
 }
 
 p {
@@ -335,23 +338,21 @@ p {
 
 /* Container Variations */
 .container-green {
-  background-color: var(--primary-green);
-  color: var(--white);
+  background-color: var(--primary-green) !important;
+  color: var(--white) !important;
 }
 
-.container-green h2, .container-green p, .container-green li {
-  color: var(--white);
+.container-green h2, .container-green p, .container-green li, .container-green h3 {
+  color: var(--white) !important;
 }
 
 .container-black {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  color: var(--white);
-  border-bottom: 1px solid var(--glass-border);
-  border-top: 1px solid var(--glass-border);
+  background-color: #000000 !important;
+  color: var(--white) !important;
 }
 
-.container-black h2, .container-black p, .container-black li {
-  color: var(--white);
+.container-black h2, .container-black p, .container-black li, .container-black h3 {
+  color: var(--white) !important;
 }
 
 /* Glassmorphism Classes */
