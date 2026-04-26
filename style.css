@@ -480,6 +480,22 @@ td strong {
   color: var(--primary-green);
 }
 
+/* Responsive Grids */
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .two-column-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+}
+
 /* Grids & Cards */
 .category-grid, .download-grid, .guidelines-grid {
   display: grid;
