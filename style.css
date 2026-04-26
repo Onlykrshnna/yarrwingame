@@ -175,11 +175,17 @@ header {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--black);
+    background-color: var(--white);
     flex-direction: column;
     padding: 2rem;
     gap: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav-links a {
+    color: var(--black) !important;
+    font-weight: 600;
   }
 
   .nav-links.active {
@@ -188,6 +194,10 @@ header {
 
   .mobile-menu-toggle {
     display: flex;
+  }
+
+  .mobile-menu-toggle span {
+    background-color: var(--black);
   }
 
   .nav-cta {
