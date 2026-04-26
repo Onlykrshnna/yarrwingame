@@ -180,7 +180,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('section').forEach(section => {
+document.querySelectorAll('section:not(.hero-section)').forEach(section => {
   section.style.opacity = '0';
   section.style.transform = 'translateY(15px)';
   section.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
