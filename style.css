@@ -738,4 +738,14 @@ footer h3 {
     margin-bottom: 1.2rem;
     scroll-margin-top: 80px;
   }
+
+  /* Compact Tables for Mobile */
+  th, td {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.85rem;
+  }
+
+  th {
+    font-size: 0.7rem;
+  }
 }
