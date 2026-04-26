@@ -36,43 +36,106 @@ document.querySelectorAll('nav a, .btn-nav').forEach(anchor => {
   });
 });
 
-// Review Display System
-const reviewsList = document.getElementById("reviews-list");
+// Stats System Update
 const avgRatingEl = document.getElementById("avg-rating");
 const voteCountEl = document.getElementById("vote-count");
+const reviewsDisplay = document.getElementById("reviews-display");
 
-let reviews = JSON.parse(localStorage.getItem("yaarwin_v2_reviews")) || [
+let reviews = JSON.parse(localStorage.getItem("yaarwin_v4_reviews")) || [
   { name: "Rahul S.", rating: 5, text: "The fastest game I've ever played. Secure and fun!", date: "2 days ago" },
   { name: "Anjali K.", rating: 5, text: "Official guides helped me a lot with registration.", date: "1 week ago" }
 ];
 
-let totalVotes = parseInt(localStorage.getItem("yaarwin_v2_total_votes")) || 12450;
-let currentAvg = parseFloat(localStorage.getItem("yaarwin_v2_avg_rating")) || 4.8;
+let totalVotes = parseInt(localStorage.getItem("yaarwin_v4_total_votes")) || 15780;
+let currentAvg = parseFloat(localStorage.getItem("yaarwin_v4_avg_rating")) || 4.9;
 
-// Initial Render
-renderReviews();
-updateStats();
+let selectedRating = 0;
+
+// Star Input Logic
+const starInput = document.getElementById("star-input");
+if (starInput) {
+  const stars = starInput.querySelectorAll("span");
+  stars.forEach(star => {
+    star.addEventListener("click", () => {
+      selectedRating = parseInt(star.getAttribute("data-value"));
+      updateStarInput();
+    });
+    star.addEventListener("mouseover", () => {
+      const hoverValue = parseInt(star.getAttribute("data-value"));
+      stars.forEach((s, index) => {
+        s.innerHTML = (index < hoverValue) ? "★" : "☆";
+        s.style.color = (index < hoverValue) ? "#fbbf24" : "#ccc";
+      });
+    });
+    star.addEventListener("mouseout", () => {
+      updateStarInput();
+    });
+  });
+}
+
+function updateStarInput() {
+  if (!starInput) return;
+  const stars = starInput.querySelectorAll("span");
+  stars.forEach((s, index) => {
+    s.innerHTML = (index < selectedRating) ? "★" : "☆";
+    s.style.color = (index < selectedRating) ? "#fbbf24" : "#ccc";
+  });
+}
+
+// Review Submission
+const submitBtn = document.getElementById("submit-review-btn");
+if (submitBtn) {
+  submitBtn.addEventListener("click", () => {
+    const name = document.getElementById("reviewer-name").value.trim();
+    const text = document.getElementById("review-text").value.trim();
+
+    if (!name || !text || selectedRating === 0) {
+      alert("Please fill in all fields and select a rating.");
+      return;
+    }
+
+    const newReview = {
+      name: name,
+      rating: selectedRating,
+      text: text,
+      date: "Just now"
+    };
+
+    reviews.unshift(newReview);
+    totalVotes++;
+    
+    // Simple average update
+    currentAvg = ((currentAvg * (totalVotes - 1)) + selectedRating) / totalVotes;
+
+    saveState();
+    renderReviews();
+    updateStats();
+
+    // Clear form
+    document.getElementById("reviewer-name").value = "";
+    document.getElementById("review-text").value = "";
+    selectedRating = 0;
+    updateStarInput();
+
+    alert("Thank you! Your review has been submitted for moderation.");
+  });
+}
 
 function renderReviews() {
-  if (!reviewsList) return;
-  if (reviews.length === 0) {
-    reviewsList.innerHTML = `
-      <div style="text-align: center; padding: 3rem; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.1);">
-        <p style="color: #666; margin: 0;">No reviews yet. Be the first to share your experience!</p>
-      </div>
-    `;
-    return;
-  }
-  reviewsList.innerHTML = reviews.map(r => `
-    <div class="glass-card" style="padding: 1.5rem; border-radius: 15px; background: rgba(255,255,255,0.03);">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+  if (!reviewsDisplay) return;
+  reviewsDisplay.innerHTML = reviews.slice(0, 4).map(r => `
+    <div class="glass-card" style="padding: 2rem; border-radius: 20px; background: var(--white); box-shadow: var(--shadow); border: 1px solid var(--glass-border);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
         <div>
-          <h4 style="color: white; margin-bottom: 0.2rem; border: none; padding: 0;">${r.name}</h4>
-          <div style="color: #fbbf24; font-size: 0.8rem;">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+          <h4 style="color: var(--black); margin-bottom: 0.2rem; border: none; padding: 0;">${r.name}</h4>
+          <div style="color: #fbbf24; font-size: 0.9rem;">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
         </div>
-        <span style="font-size: 0.75rem; color: #666;">${r.date}</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">${r.date}</span>
       </div>
-      <p style="font-size: 0.9rem; color: #aaa; margin: 0;">"${r.text}"</p>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0; line-height: 1.5;">"${r.text}"</p>
+      <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--primary-green); font-weight: bold;">
+        ✓ Verified Player
+      </div>
     </div>
   `).join('');
 }
@@ -89,17 +152,21 @@ function updateStats() {
 }
 
 function saveState() {
-  localStorage.setItem("yaarwin_v2_reviews", JSON.stringify(reviews));
-  localStorage.setItem("yaarwin_v2_total_votes", totalVotes);
-  localStorage.setItem("yaarwin_v2_avg_rating", currentAvg);
+  localStorage.setItem("yaarwin_v4_reviews", JSON.stringify(reviews));
+  localStorage.setItem("yaarwin_v4_total_votes", totalVotes);
+  localStorage.setItem("yaarwin_v4_avg_rating", currentAvg);
 }
+
+// Initial render
+renderReviews();
+updateStats();
 
 // Simulated Live Updates
 setInterval(() => {
   if (totalVotes > 0 && Math.random() > 0.8) {
     totalVotes += Math.floor(Math.random() * 5) + 1;
     updateStats();
-    localStorage.setItem("yaarwin_v2_total_votes", totalVotes);
+    localStorage.setItem("yaarwin_v4_total_votes", totalVotes);
   }
 }, 8000);
 
