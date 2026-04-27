@@ -1,4 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?>
+Act as a senior technical SEO expert + UX-focused web optimizer.
+
+Audit and rewrite a homepage for: https://www.yarrwingame.com
+
+Goal:
+Fix all SEO, performance, and structure issues while keeping content natural, user-friendly, and optimized for Google ranking (India region).
+
+----------------------------------------
+🔴 CRITICAL FIXES TO IMPLEMENT
+----------------------------------------
+
+1. Fix keyword overuse:
+- Reduce "yaar win" keyword density to under 2%
+- Replace repetitions with semantic keywords like:
+  "online gaming platform", "secure login portal", "play online", "gaming experience"
+
+2. Improve content structure:
+- H1 must align closely with title intent (login + register)
+- Use structured sections:
+  H1: Main keyword with intent
+  H2: What is Yaar Win Game
+  H2: Features
+  H2: How to Register
+  H2: How to Login
+  H2: Why Choose Us
+  H2: FAQ
+
+3. Fix thin and repetitive content:
+- Rewrite content to be informative, not repetitive
+- Add real value (steps, benefits, clarity)
+
+----------------------------------------
+🟠 WARNING FIXES
+----------------------------------------
+
+4. Fix broken external links:
+- Remove or correct:
+  https://linkedin.com/company/yarrwin
+  https://youtube.com/@yarrwin
+
+5. Add missing Open Graph tags:
+- og:title
+- og:description
+- og:image
+- og:url
+
+6. Add image optimization:
+- Add ALT text to all images
+- Ensure descriptive, keyword-relevant ALT tags
+
+7. Add hreflang (if targeting India):
+- hreflang="en-IN"
+
+----------------------------------------
+⚙️ TECHNICAL SEO FIXES
+----------------------------------------
+
+8. Fix index page issue:
+- Ensure /index.html properly redirects to /
+- Avoid duplicate index versions
+
+9. Improve internal linking:
+- Use anchor texts:
+  "Yaar Win Login"
+  "Register on Yaar Win"
+  "Download Yaar Win App"
+
+10. Improve canonical consistency:
+- Ensure canonical returns 200 (not 307 redirect)
+
+----------------------------------------
+🚀 PERFORMANCE OPTIMIZATION (Mobile Focus)
+----------------------------------------
+
+11. Improve LCP (target <2.5s):
+- Reduce hero section size
+- Preload main image
+- Compress images (WebP/AVIF)
+
+12. Reduce FCP delay:
+- Minimize render-blocking CSS
+- Inline critical CSS
+
+13. Lazy load non-critical images:
+- Use loading="lazy"
+
+----------------------------------------
+📈 CTR + SEARCH OPTIMIZATION
+----------------------------------------
+
+14. Improve meta title:
+- Keep under 60 chars
+- Add intent words: login, register
+
+15. Improve meta description:
+- Add CTA (Join, Start, Access)
+- Highlight benefits (fast, secure, easy)
+
+----------------------------------------
+🔐 TRUST + UX IMPROVEMENTS
+----------------------------------------
+
+16. Add trust signals:
+- Secure platform messaging
+- Simple steps
+- FAQ section
+
+17. Improve readability:
+- Short paragraphs
+- Bullet points
+- Human tone (not robotic)
+
+----------------------------------------
+📦 OUTPUT REQUIRED
+----------------------------------------
+
+Provide:
+
+1. Fully optimized homepage content
+2. Meta title + meta description
+3. Fixed heading structure
+4. Internal linking suggestions
+5. Open Graph meta tags
+6. Technical fixes summary (dev-ready)
+7. Performance optimization checklist
+
+Ensure content is written for humans first, SEO second.
+Avoid keyword stuffing completely.<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yarrwingame.com/index.html</loc>
