@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
-Sitemap: https://yarrwingame.com/sitemap.xml
+Sitemap: https://www.yarrwingame.com/sitemap.xml
