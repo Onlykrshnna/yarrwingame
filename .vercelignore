@@ -1,0 +1,9 @@
+.next
+node_modules
+legacy_html
+*.sh
+test_write.txt
+AGENTS.md
+CLAUDE.md
+README.md
+script.js
