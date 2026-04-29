@@ -1,8 +1,7 @@
-import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  outputFileTracingRoot: __dirname,
+  /* Standard config */
 };
 
 export default nextConfig;
