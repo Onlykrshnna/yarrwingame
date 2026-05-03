@@ -2,80 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yarrwingame.com/</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/yarr-win-game.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/yarr-win-game/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/yarr-win-guide.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/yarr-win-guide/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/yarr-win-download.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/yarr-win-download/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/yarr-win-register.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/yarr-win-register/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/yarr-win-login.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/yarr-win-login/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/about.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/about/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/contact.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/contact/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.yarrwingame.com/responsible-gaming.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.yarrwingame.com/yarr-win-real-or-fake.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://www.yarrwingame.com/real-or-fake/</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.yarrwingame.com/best-browser-games.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.yarrwingame.com/multiplayer-games-online.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.yarrwingame.com/free-games-no-download.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
