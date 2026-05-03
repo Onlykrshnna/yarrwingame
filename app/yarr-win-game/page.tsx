@@ -29,12 +29,12 @@ export default function YarrWinGame() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://yarrwingame.com/"
+        "item": "https://www.yarrwingame.com/"
       },{
         "@type": "ListItem",
         "position": 2,
         "name": "Yarr Win Game",
-        "item": "https://yarrwingame.com/yarr-win-game"
+        "item": "https://www.yarrwingame.com/yarr-win-game/"
       }]
     }
   };

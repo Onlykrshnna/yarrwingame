@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "yarrwingame.com"
+        }
+      ],
+      "destination": "https://www.yarrwingame.com/$1",
+      "permanent": true
+    }
+  ]
+}
