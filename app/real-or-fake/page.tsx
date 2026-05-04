@@ -1,12 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-const ReviewsSection = dynamic(() => import('../components/ReviewsSection'), { 
-  ssr: false,
-  loading: () => <div style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading reviews...</div>
-});
+import ReviewsWrapper from '../components/ReviewsWrapper';
 
 export const metadata: Metadata = {
   title: "Yaar Win Real or Fake? Honest Platform Review & Safety Report",
@@ -102,7 +97,7 @@ export default function RealOrFake() {
         </div>
       </section>
 
-      <ReviewsSection />
+      <ReviewsWrapper />
 
       <section id="faq" style={{ maxWidth: '1000px', margin: '4rem auto', padding: '0 2rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Transparency FAQ</h2>

@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-
-const ReviewsSection = dynamic(() => import('./components/ReviewsSection'), { 
-  ssr: false,
-  loading: () => <div style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading reviews...</div>
-});
+import ReviewsWrapper from './components/ReviewsWrapper';
 
 const FAQSection = dynamic(() => import('./components/FAQSection'), {
   ssr: false
@@ -143,7 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ReviewsSection />
+      <ReviewsWrapper />
     </>
   );
 }

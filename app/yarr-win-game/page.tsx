@@ -1,12 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-const ReviewsSection = dynamic(() => import('../components/ReviewsSection'), { 
-  ssr: false,
-  loading: () => <div style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading reviews...</div>
-});
+import ReviewsWrapper from '../components/ReviewsWrapper';
 
 export const metadata: Metadata = {
   title: "Play Yaar Win | Online Skill Games Dashboard",
@@ -161,7 +156,7 @@ export default function YarrWinGame() {
         </p>
       </section>
 
-      <ReviewsSection />
+      <ReviewsWrapper />
     </>
   );
 }
