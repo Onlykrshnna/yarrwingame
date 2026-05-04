@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  // Triggering redeploy to verify static export fix
+  // Final deployment verification
   turbopack: {
     root: __dirname,
   },
