@@ -22,7 +22,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "0GNNJubmz7TnuwW5kpc6ZN4x5G5-O5IFLfZcBaNHa-M",
+    google: [
+      "0GNNJubmz7TnuwW5kpc6ZN4x5G5-O5IFLfZcBaNHa-M",
+      "8nk9oQPeBKdQ-zDfI6HQb7daEUSOf6lwhc3UrsrRYBs"
+    ],
   },
   openGraph: {
     type: "website",
