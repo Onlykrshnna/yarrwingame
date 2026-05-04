@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     description: "India's trusted skill gaming platform. Register free and start playing.",
     images: "/og-image.jpg",
   },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
