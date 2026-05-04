@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import ReviewsWrapper from './components/ReviewsWrapper';
-
-const FAQSection = dynamic(() => import('./components/FAQSection'), {
-  ssr: false
-});
+import FAQWrapper from './components/FAQWrapper';
 
 export default function Home() {
   const faqs = [
@@ -135,7 +131,7 @@ export default function Home() {
       <section id="faq">
         <div className="content-container">
           <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>FAQ</h2>
-          <FAQSection faqs={faqs} />
+          <FAQWrapper faqs={faqs} />
         </div>
       </section>
 
